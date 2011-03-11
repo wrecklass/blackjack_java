@@ -1,0 +1,49 @@
+<!--
+	$Source: /var/lib/cvsroot/blackjack_java/build.xml,v $
+	$Revision: 1.1.1.1 $
+	$Date: 2006/07/01 07:39:12 $
+-->
+<project name="blackjack" default="compile" basedir="./">
+
+  <!-- set global properties for this build -->
+  <property name="src"   value="${basedir}/src"/>
+  <property name="build" value="${basedir}/build"/>
+  <property name="dist"  value="${basedir}/dist"/>
+
+  <!-- Specify the compiler to use -->
+  <property name="build.compiler" value="modern"/>
+
+  <target name="init">
+    <!-- Create time stamp -->
+    <tstamp/>
+    <!-- Create the build directory used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <!-- specify what to compile. This builds everything -->
+  <target name="compile" depends="init">
+    <!-- Compile the java code from src into build -->
+    <javac srcdir="${src}" destdir="${build}"/>
+  </target>
+
+  <target name="makejar" depends="compile">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}"/>
+    <!-- Put everything in build into dest-DSTAMP.jar file -->
+    <jar jarfile="${dist}/blackjack-${DSTAMP}.jar"
+         manifest="${src}/MANIFEST.MF"
+         basedir="${build}"
+    />
+  </target>
+
+  <target name="dist" depends="clean,makejar">
+      <!-- Clean and build from scratch -->
+  </target>
+
+  <target name="clean">
+    <!-- Delete the build directory and its contents -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+
+</project>
