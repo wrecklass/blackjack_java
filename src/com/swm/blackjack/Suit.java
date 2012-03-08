@@ -1,5 +1,5 @@
 /**
- * Enumberated Suit specifying standard 
+ * Enumerated Suit specifying standard 
  * card suits (Club, Diamond, Heart, Spade)
  */
 package com.swm.blackjack;

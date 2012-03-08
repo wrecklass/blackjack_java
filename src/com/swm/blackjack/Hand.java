@@ -1,5 +1,5 @@
 /**
- * Hand - JPanel to manage a players hands and 
+ * Hand - JPanel to manage a player's hands and 
  * display the cards on the board
  */
 package com.swm.blackjack;
@@ -21,6 +21,12 @@ import javax.swing.JPanel;
  */
 public abstract class Hand extends JPanel
 {
+	/**
+	 * Hand
+	 * JPanel to manage a player's hand and display the cards on the board 
+	 */
+	private static final long serialVersionUID = -4281747320119006211L;
+	
 	public static final Font cardFont = new Font( "Helvetica", Font.BOLD, 16 );
 	private static final int GAP = 10;
 	static final int MAX_CARDS_IN_HAND = 6;
