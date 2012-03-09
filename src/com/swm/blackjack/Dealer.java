@@ -1,14 +1,15 @@
-/**
- * Dealer is the JPanel for the Dealers cards to be displayed on
- */
 package com.swm.blackjack;
 
 /**
+ * JPanel for the Dealers cards to be displayed on the BlackJack
+ * table.
+ *
  * @author smartin
  * 
  */
 class Dealer extends Hand
 {
+    private static final long serialVersionUID = 1L;
 	private boolean hitOnSoft17 = false;
 	
 	/**
@@ -46,10 +47,8 @@ class Dealer extends Hand
 	}
 
 	@Override
-	public int pay(int winnings, int bet)
+	public Integer pay(Integer winnings, Integer bet)
 	{
 		return winnings - bet;
 	}
-
-	private static final long serialVersionUID = 3129914725298477862L;
 }

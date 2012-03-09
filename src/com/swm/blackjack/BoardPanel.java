@@ -1,7 +1,3 @@
-/**
- * BoardPanel - JPanel that shows the games primary playing 
- * surface with Cards and player option buttons.
- */
 package com.swm.blackjack;
 
 import static com.swm.blackjack.BlackJack.darkGreen;
@@ -16,14 +12,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
+ * BoardPanel - JPanel that shows the games primary playing 
+ * surface with Cards and player option buttons.
+ *
  * @author smartin
  * 
  */
 class BoardPanel extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-	private static final int GAP = 20;
-	private Deck deck = new Deck();
+	private static final Integer GAP = 20;
+	private Deck deck = new Deck(7);
 	private JPanel controls = new JPanel();
 
 	private Dealer dealer = new Dealer();
@@ -208,7 +207,7 @@ class BoardPanel extends JPanel implements ActionListener
 
 	/**
 	 * Reset the hands on the board for a new Hand.
-	 * Note that the Deck class automatically reshuffles
+	 * Note that the Deck class automatically re-shuffles
 	 * if there aren't enough cards to play a hand.
 	 */
 	private void redeal()

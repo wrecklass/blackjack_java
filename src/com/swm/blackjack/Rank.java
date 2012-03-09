@@ -1,9 +1,8 @@
-/**
- * Ranks represents the standard Card ranks Ace-King, with Ace as lowest value.
- */
 package com.swm.blackjack;
 
 /**
+ * Represents the standard Card Ranks Ace-King, with Ace as lowest value.
+ *
  * @author smartin
  * 
  */
@@ -36,10 +35,10 @@ enum Rank implements Comparable<Rank>
 
 	/**
 	 * Retrieve the Rank based on a given Ordinal (0-12)
-	 * @param ordinal the <code>int</code> of the ordinal
+	 * @param ordinal the <code>Integer</code> of the ordinal
 	 * @return the Rank value for the ordinal specified
 	 */
-	public static Rank aRank(int ordinal)
+	public static Rank aRank(Integer ordinal)
 	{
 		return Rank.values()[ordinal];
 	}

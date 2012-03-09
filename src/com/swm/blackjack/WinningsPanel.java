@@ -1,7 +1,3 @@
-/**
- * WinningsPanel - contains the information about bets and 
- * amounts won/lost in the game.
- */
 package com.swm.blackjack;
 
 import static com.swm.blackjack.BlackJack.darkGreen;
@@ -18,14 +14,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * @author smartin
- * 
+ * WinningsPanel - contains the information about bets and 
+ * amounts won/lost in the game.
+ *
+ * @author smartin 
  */
 class WinningsPanel extends JPanel implements ItemListener
 {
-	private static final long serialVersionUID = 1L;
-	private static final int DEFAULT_WINNINGS = 1500;
-	private static final int GAP = 20, TEXT_WIDTH = 20;
+    private static final long serialVersionUID = 1L;
+	private static final Integer DEFAULT_WINNINGS = 1500;
+	private static final Integer GAP = 20, TEXT_WIDTH = 20;
 	private static final Font winningsFont = new Font( "Sans Serif", Font.BOLD,
 			14 );
 	private JTextField winnings = new JTextField( TEXT_WIDTH );
@@ -33,7 +31,7 @@ class WinningsPanel extends JPanel implements ItemListener
 	private JPanel betPanel = new JPanel();
 	private Integer[] betList = {25,50,100,200,300,400,500};
 	private JComboBox betBox = new JComboBox(betList);
-	private int bet = 100, winningsAmount = DEFAULT_WINNINGS;
+	private Integer bet = 100, winningsAmount = DEFAULT_WINNINGS;
 	private boolean dbled = false;
 
 	/**
@@ -49,7 +47,7 @@ class WinningsPanel extends JPanel implements ItemListener
 
 		winnings.setFont( winningsFont );
 		winnings.setHorizontalAlignment( JTextField.CENTER );
-		winnings.setText( "Winnings = $ " + winningsAmount );
+		winnings.setText( "Winnings = $" + winningsAmount );
 
 		message.setFont( winningsFont );
 		message.setHorizontalAlignment( JTextField.CENTER );
@@ -96,7 +94,7 @@ class WinningsPanel extends JPanel implements ItemListener
 		dbled = false;
 		betBox.setSelectedIndex(2);
 		winningsAmount = DEFAULT_WINNINGS;
-		winnings.setText( "Winnings = $ " + winningsAmount );
+		winnings.setText( "Winnings = $" + winningsAmount );
 		message.setText( "" );
 	}
 
@@ -152,15 +150,15 @@ class WinningsPanel extends JPanel implements ItemListener
 				theMsg = msg;
 			else theMsg = winner.toString() + " wins.";
 		}
-		winnings.setText( "Winnings = $ " + winningsAmount );
+		winnings.setText( "Winnings = $" + winningsAmount );
 		message.setText( theMsg );
 	}
 
 	/**
 	 * Provides the winnings value for external consumption
-	 * @return <code>int</code>the current winnings amount
+	 * @return <code>Integer</code>the current winnings amount
 	 */
-	public int getWinnings()
+	public Integer getWinnings()
 	{
 		return winningsAmount;
 	}

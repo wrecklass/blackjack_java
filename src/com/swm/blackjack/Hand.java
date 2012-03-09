@@ -1,7 +1,3 @@
-/**
- * Hand - JPanel to manage a player's hands and 
- * display the cards on the board
- */
 package com.swm.blackjack;
 
 import static com.swm.blackjack.BlackJack.darkGreen;
@@ -16,6 +12,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
+ * JPanel to manage a player's hands and display the cards on the board.
+ * 
+ * This is an abstract class that gets instantiated by the Dealer and Player
+ * classes.
+ *
  * @author smartin
  * 
  */
@@ -25,10 +26,10 @@ public abstract class Hand extends JPanel
 	 * Hand
 	 * JPanel to manage a player's hand and display the cards on the board 
 	 */
-	private static final long serialVersionUID = -4281747320119006211L;
+	private static final long serialVersionUID = 1L;
 	
 	public static final Font cardFont = new Font( "Helvetica", Font.BOLD, 16 );
-	private static final int GAP = 10;
+	private static final Integer GAP = 10;
 	static final int MAX_CARDS_IN_HAND = 6;
 	private JPanel innerPanel = new JPanel();
 	private JLabel label;
@@ -142,7 +143,7 @@ public abstract class Hand extends JPanel
 	 * @param bet the current amount of the bet
 	 * @return the players winnings after the bet is added or subtracted
 	 */
-	abstract public int pay(int winnings, int bet);
+	abstract public Integer pay(Integer winnings, Integer bet);
 
 	/**
 	 * Utility function simply returns the name of the player
@@ -179,16 +180,16 @@ public abstract class Hand extends JPanel
 	 * are aces in the hand, make sure they are counted appropriately
 	 * @return <code>int</code> value of the hand
 	 */
-	public int getTotal()
+	public Integer getTotal()
 	{
-		int ret = 0;
-		int aces = 0;
+		Integer ret = 0;
+		Integer aces = 0;
 
 		soft = false;
 		
 		for ( Card card : cards ) {
 			if ( card.getOrientation() == CardOrientation.FACE_UP ) {
-				int val = card.getValue();
+				Integer val = card.getValue();
 				ret += val;
 				if ( val == 1 ) {
 					aces += 1;

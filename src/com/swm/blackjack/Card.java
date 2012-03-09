@@ -1,25 +1,25 @@
+package com.swm.blackjack;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
+import javax.swing.JPanel;
+
 /**
  * Card - a JPanel class that specifies an individual card and how to
  * draw it in the playing area.
  * 
  * A card has a Rank (Ace - King), Suit (Club, Diamond, Heart, Spade) 
  * and an Orientation (Face Up, Face Down, or Empty)
- */
-package com.swm.blackjack;
-
-import java.awt.Dimension;
-import java.awt.Graphics;
-
-import javax.swing.JPanel;
-
-/**
+ * 
  * @author smartin
- *
  */
 class Card extends JPanel implements Comparable<Card>
 {
 	private static final long serialVersionUID = 2L;
-	public static final int WIDTH = 60, HEIGHT = 80;
+	public static final Integer WIDTH = 60, HEIGHT = 80;
 	private Rank rank;
 	private Suit suit;
 	private CardOrientation orientation;
@@ -92,12 +92,26 @@ class Card extends JPanel implements Comparable<Card>
 	/**
 	 * Standard method used by swing to paint the component in the Graphics
 	 * container. Calls the draw() method of the cards orientation member.
+	 * 
+	 * To get font smoothing (anti-aliasing) we render with the 
+	 * java.awt.Graphics2D engine.
 	 * @param a Graphics swing drawing container
 	 */
 	public void paintComponent(Graphics graphics)
 	{
-		super.paintComponent( graphics );
-		orientation.draw( graphics, suit, rank );
+        Graphics2D g2 = (Graphics2D) graphics;
+        
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+          RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        
+        g2.setRenderingHint(RenderingHints.KEY_RENDERING,
+          RenderingHints.VALUE_RENDER_QUALITY);
+        
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_LCD_CONTRAST, 200);
+        
+        super.paintComponent(g2);
+//		super.paintComponent( graphics );
+		orientation.draw( g2, suit, rank );
 	}
 
 	/**

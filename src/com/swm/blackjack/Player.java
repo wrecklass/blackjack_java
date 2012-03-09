@@ -1,15 +1,16 @@
-/**
- * Player is the specific JPanel for the Users hand
- */
 package com.swm.blackjack;
 
 /**
+ * The specific JPanel for the Users hand
+ *
  * @author smartin
  *
  */
 class Player extends Hand
 {
-	/**
+    private static final long serialVersionUID = 1L;
+
+    /**
 	 * Constructor sets the Name of the player on the Panel
 	 */
 	public Player()
@@ -18,10 +19,8 @@ class Player extends Hand
 	}
 
 	@Override
-	public int pay(int winnings, int bet)
+	public Integer pay(Integer winnings, Integer bet)
 	{
 		return winnings + bet;
 	}
-
-	private static final long serialVersionUID = 8439914721238477862L;
 }

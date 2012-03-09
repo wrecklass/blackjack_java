@@ -1,7 +1,3 @@
-/**
- * Enumerated Suit specifying standard 
- * card suits (Club, Diamond, Heart, Spade)
- */
 package com.swm.blackjack;
 
 import java.awt.Color;
@@ -11,12 +7,15 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 
 /**
+ * Enumerated Suit specifying standard 
+ * card suits (Club, Diamond, Heart, Spade)
+ *
  * @author smartin
  */
 enum Suit implements Comparable<Suit>
 {
 	CLUB {
-		void drawSymbol(Graphics graphics, int x, int y)
+		void drawSymbol(Graphics graphics, Integer x, Integer y)
 		{
 			if (clubIcon != null) {
 				clubIcon.paintIcon(null,graphics,x+12, y+4);
@@ -34,7 +33,7 @@ enum Suit implements Comparable<Suit>
 		}
 	},
 	DIAMOND {
-		void drawSymbol(Graphics graphics, int x, int y)
+		void drawSymbol(Graphics graphics, Integer x, Integer y)
 		{
 			if (diamondIcon != null) {
 				diamondIcon.paintIcon(null,graphics,x+12, y+4);
@@ -49,7 +48,7 @@ enum Suit implements Comparable<Suit>
 		}
 	},
 	HEART {
-		void drawSymbol(Graphics graphics, int x, int y)
+		void drawSymbol(Graphics graphics, Integer x, Integer y)
 		{
 			if (heartIcon != null) {
 				heartIcon.paintIcon(null,graphics,x+12, y+4);
@@ -66,7 +65,7 @@ enum Suit implements Comparable<Suit>
 		}
 	},
 	SPADE {
-		void drawSymbol(Graphics graphics, int x, int y)
+		void drawSymbol(Graphics graphics, Integer x, Integer y)
 		{
 			if (spadeIcon != null) {
 				spadeIcon.paintIcon(null,graphics,x+12, y+4);
@@ -118,7 +117,7 @@ enum Suit implements Comparable<Suit>
 	 * @param ordinal the Suit ordinal
 	 * @return the Suit corresponding to the given ordinal
 	 */
-	public static Suit aSuit(int ordinal)
+	public static Suit aSuit(Integer ordinal)
 	{
 		return Suit.values()[ordinal];
 	}
@@ -130,5 +129,5 @@ enum Suit implements Comparable<Suit>
 	 * @param xoffset the horizontal offset to draw at
 	 * @param yoffset the vertical offset to draw at
 	 */
-	abstract void drawSymbol(Graphics graphics, int xoffset, int yoffset);
+	abstract void drawSymbol(Graphics graphics, Integer xoffset, Integer yoffset);
 }

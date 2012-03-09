@@ -1,7 +1,3 @@
-/**
- * GameFrame - Main Game frame used to define the window that the
- * game plays in.
- */
 package com.swm.blackjack;
 
 import java.awt.BorderLayout;
@@ -21,26 +17,27 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 /**
- * This is the main window frame for the game
+ * This is the main window frame for the game. All of the graphics 
+ * components of the game appear in this Frame.
  * 
  * @author smartin
  * 
  */
 class GameFrame implements ActionListener {
-    private static final int GAP = 2, 
-                             WIDTH = 407, 
-                             HEIGHT = 575;
+    private static final Integer GAP   = 2, 
+                                 WIDTH = 407, 
+                                 HEIGHT = 575;
     private JFrame frame;
     private JMenuItem newGameItem = new JMenuItem("New Game"),
                       exitItem    = new JMenuItem("Quit");
 
-    private JMenuItem aboutItem = new JMenuItem("About Java BlackJack..."),
-                      helpItem  = new JMenuItem("How to Play...");
+    private JMenuItem aboutItem   = new JMenuItem("About Java BlackJack..."),
+                      helpItem    = new JMenuItem("How to Play...");
 
-    private JMenuItem dealItem   = new JMenuItem("Deal"),
-                      hitItem    = new JMenuItem("Hit"),
-                      stayItem   = new JMenuItem("Stay"),
-                      doubleItem = new JMenuItem("Double");
+    private JMenuItem dealItem    = new JMenuItem("Deal"),
+                      hitItem     = new JMenuItem("Hit"),
+                      stayItem    = new JMenuItem("Stay"),
+                      doubleItem  = new JMenuItem("Double");
 
     private BoardPanel boardPanel;
     private WinningsPanel winningsPanel;
@@ -203,6 +200,7 @@ class GameFrame implements ActionListener {
      * Display out About dialog box
      */
     private void displayAboutBox() {
+
         JOptionPane.showMessageDialog(frame,
                                       "Java BlackJack \nCopyright © 2006-2008 Stephen Martin, all rights reserved",
                                       "About BlackJack",

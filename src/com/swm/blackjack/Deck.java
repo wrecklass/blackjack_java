@@ -1,35 +1,46 @@
-/**
- * Deck is a representation of a deck of Cards, typically
- * being 52 cards per deck. Note that a deck simply contains
- * an Array of 52 Integers, each of which forms the Ordinal of
- * the Cards to be displayed.
- */
 package com.swm.blackjack;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
 
 /**
- * @author smartin
+ * Deck is a representation of a deck of Cards, typically
+ * being 52 cards per deck. The constructor, Deck(Integer), 
+ * actually allows us to specify how many decks we wish to 
+ * represent in a 'shoe.' In most casino's this is used to
+ * provide a larger Deck that is used to make card counting
+ * more difficult.
  * 
+ * @author smartin
  */
 class Deck
 {
 	// Implement a 7 deck 'shoe'
 	// 52 cards * 7 decks = 364 total cards
-	private static final int CARDS_IN_DECK = 364;
-	private ArrayList<Card> deck = new ArrayList<Card>();
-	private int nextCard;
-
+	private static final Integer CARDS_IN_DECK = 52;
+	private ArrayList<Card> deck;
+	private Integer nextCard;
+	private Integer cards = CARDS_IN_DECK;
+	
 	/**
-	 * Constructor creates our Array and shuffles it
+	 * Constructor creates our Deck of Cards and shuffles it. By specifying 
+	 * the number of decks at runtime, we can mimic having a
+	 * "multiple-Deck" shoe as used in most casino's.
+	 * 
+	 * @param <code>Integer</code> numberOfDecks
 	 */
-	public Deck()
+	public Deck(Integer numberOfDecks)
 	{
+	    cards = numberOfDecks * CARDS_IN_DECK;
+	    deck = new ArrayList<Card>(cards);
 		shuffle();
 	}
 
+	@SuppressWarnings("unused")
+    private Deck()
+	{
+	    // Never invoked
+	}
+	
 	/**
 	 * determine if the deck has enough cards for another hand.
 	 * @return <code>true</code> if there is enough cards for a new hand or
@@ -37,12 +48,12 @@ class Deck
 	 */
 	public boolean isEmpty()
 	{
-		return nextCard >= (CARDS_IN_DECK - 20);
+		return nextCard >= (cards - 20);
 	}
 
 	/**
-	 * Deal the next card from the deck
-	 * @return the <code>ordinal</code> of the next card
+	 * Deal the next Card from the Deck
+	 * @return the next <code>Card</code>
 	 */
 	public Card draw()
 	{
@@ -50,16 +61,18 @@ class Deck
 	}
 
 	/**
-	 * Shuffle the deck. If the deck is currently empty, insert the original 52
-	 * cards, then shuffle.
-	 * Note we simply use the standard java.util.Collections.shuffle() method,
-	 * with the current Long Date in seconds as a Seed.
+	 * Shuffle the deck. If the deck is currently empty, insert the original 
+	 * Cards, then shuffle.
+	 * 
+	 * Note we simply use the standard java.util.Collections.shuffle() method.
+	 * The current implementation of the java shuffle method will start us
+	 * with a date/time related Random seed.
 	 */
 	public void shuffle()
 	{
 		int cardCount = 0;
 		if ( deck.isEmpty() ) {
-			while ( cardCount < CARDS_IN_DECK) {
+			while ( cardCount < cards) {
 				for (Suit suit : Suit.values()) {
 					for (Rank rank : Rank.values()) {
 						deck.add(new Card(suit, rank));
@@ -68,9 +81,7 @@ class Deck
 				}
 			}
 		}
-		Random rand = new Random();
-		rand.setSeed( new Date().getTime() );
-		java.util.Collections.shuffle( deck, rand );
+		java.util.Collections.shuffle(deck);
 		nextCard = 0;
 	}
 }
