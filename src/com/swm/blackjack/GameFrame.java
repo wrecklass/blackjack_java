@@ -202,7 +202,7 @@ class GameFrame implements ActionListener {
     private void displayAboutBox() {
 
         JOptionPane.showMessageDialog(frame,
-                                      "Java BlackJack \nCopyright © 2006-2008 Stephen Martin, all rights reserved",
+                                      "Java BlackJack \nCopyright C 2006-2008 Stephen Martin, all rights reserved",
                                       "About BlackJack",
                                       JOptionPane.PLAIN_MESSAGE);
     }
