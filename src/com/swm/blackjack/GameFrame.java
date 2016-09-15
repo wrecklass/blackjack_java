@@ -24,6 +24,7 @@ import javax.swing.KeyStroke;
  * 
  */
 class GameFrame implements ActionListener {
+    private static final String version = "1.0.1";
     private static final Integer GAP   = 2, 
                                  WIDTH = 407, 
                                  HEIGHT = 575;
@@ -202,7 +203,8 @@ class GameFrame implements ActionListener {
     private void displayAboutBox() {
 
         JOptionPane.showMessageDialog(frame,
-                                      "Java BlackJack \nCopyright C 2006-2008 Stephen Martin, all rights reserved",
+                                      "Java BlackJack " + version + 
+                                      "\nCopyright C 2006-2016 Stephen Martin, all rights reserved",
                                       "About BlackJack",
                                       JOptionPane.PLAIN_MESSAGE);
     }
